@@ -1,0 +1,300 @@
+/* ============================================
+   FRIDAY – Animations
+   ============================================ */
+
+/* --- Keyframes --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* --- Animation Classes --- */
+.animate-fade-in {
+    animation: fadeIn var(--transition-base) ease;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp var(--transition-base) ease;
+}
+
+.animate-fade-in-down {
+    animation: fadeInDown var(--transition-base) ease;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft var(--transition-base) ease;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight var(--transition-base) ease;
+}
+
+.animate-scale-in {
+    animation: scaleIn var(--transition-base) ease;
+}
+
+/* --- Page Transition --- */
+.page-enter {
+    animation: fadeInUp 0.3s ease;
+}
+
+/* --- Staggered children --- */
+.stagger-children>*:nth-child(1) {
+    animation-delay: 0ms;
+}
+
+.stagger-children>*:nth-child(2) {
+    animation-delay: 50ms;
+}
+
+.stagger-children>*:nth-child(3) {
+    animation-delay: 100ms;
+}
+
+.stagger-children>*:nth-child(4) {
+    animation-delay: 150ms;
+}
+
+.stagger-children>*:nth-child(5) {
+    animation-delay: 200ms;
+}
+
+.stagger-children>*:nth-child(6) {
+    animation-delay: 250ms;
+}
+
+.stagger-children>*:nth-child(7) {
+    animation-delay: 300ms;
+}
+
+.stagger-children>*:nth-child(8) {
+    animation-delay: 350ms;
+}
+
+.stagger-children>*:nth-child(9) {
+    animation-delay: 400ms;
+}
+
+.stagger-children>*:nth-child(10) {
+    animation-delay: 450ms;
+}
+
+.stagger-children>* {
+    animation-fill-mode: both;
+}
+
+/* --- Hover lift --- */
+.hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* --- Mic listening animation --- */
+.mic-listening-ring {
+    position: relative;
+}
+
+.mic-listening-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 2px solid var(--danger);
+    animation: pulse 1.5s infinite;
+    pointer-events: none;
+}
+
+/* --- Loading spinner --- */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+/* --- Skeleton loading --- */
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-tertiary) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+/* --- Toast notification --- */
+.toast {
+    position: fixed;
+    bottom: 80px;
+    right: var(--space-4);
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    z-index: 300;
+    animation: fadeInUp 0.3s ease;
+    box-shadow: var(--shadow-lg);
+    max-width: 320px;
+}
+
+.toast.toast-exit {
+    animation: fadeIn 0.3s ease reverse;
+}
+
+/* --- Typing indicator (chat) --- */
+@keyframes typingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    30% {
+        transform: translateY(-6px);
+        opacity: 1;
+    }
+}
+
+.typing-dots {
+    display: inline-flex;
+    gap: 3px;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.typing-dots span {
+    animation: typingBounce 1.4s ease infinite;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.typing-indicator .msg-bubble {
+    min-width: 60px;
+    text-align: center;
+}
